@@ -7,11 +7,11 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import InputError from '@/Components/InputError';
 
-interface Props {
-  status: string;
+const Props = {
+  status: String;
 }
 
-export default function ForgotPassword({ status }) {
+export default function ForgotPassword({ status } = Props) {
   const form = useForm({
     email: '',
   });

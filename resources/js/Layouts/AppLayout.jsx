@@ -1,7 +1,7 @@
 import { Inertia } from '@inertiajs/inertia';
 import { InertiaLink, Head } from '@inertiajs/inertia-react';
 import classNames from 'classnames';
-import React, { PropsWithChildren, useState } from 'react';
+import React, { useState } from 'react';
 import ApplicationMark from '@/Components/ApplicationMark';
 import Dropdown from '@/Components/Dropdown';
 import DropdownLink from '@/Components/DropdownLink';
@@ -14,7 +14,6 @@ export default function AppLayout({ title, renderHeader, children }) {
     useState(false);
 
   const page = useTypedPage();
-  console.log(page);
   function switchToTeam(e, team) {
     e.preventDefault();
     Inertia.put(
@@ -37,7 +36,7 @@ export default function AppLayout({ title, renderHeader, children }) {
     <div>
       <Head title={title} />
 
-      {/* <Banner /> */}
+      <Banner />
 
       <div className="min-h-screen bg-gray-100">
         <nav className="bg-white border-b border-gray-100">

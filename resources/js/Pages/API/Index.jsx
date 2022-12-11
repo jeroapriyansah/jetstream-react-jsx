@@ -3,17 +3,17 @@ import APITokenManager from '@/Pages/API/Partials/APITokenManager';
 import AppLayout from '@/Layouts/AppLayout';
 import { ApiToken } from '@/types';
 
-interface Props {
-  tokens: ApiToken[];
-  availablePermissions: string[];
-  defaultPermissions: string[];
+const Props = {
+  tokens: ApiToken,
+  availablePermissions: String,
+  defaultPermissions: String,
 }
 
 export default function ApiTokenIndex({
   tokens,
   availablePermissions,
   defaultPermissions,
-}: Props) {
+} = Props) {
   return (
     <AppLayout title={'API Tokens'}>
       <div>

@@ -17,7 +17,7 @@ import SectionBorder from '@/Components/SectionBorder';
 import { ApiToken } from '@/types';
 
 export default function APITokenManager({
-  tokens: ApiToken[],
+  tokens: ApiToken,
   availablePermissions,
   defaultPermissions,
 }) {
@@ -26,15 +26,15 @@ export default function APITokenManager({
     permissions: defaultPermissions,
   });
   const updateApiTokenForm = useForm({
-    permissions: [] as string[],
+    permissions: [],
   });
   const deleteApiTokenForm = useForm({});
   const [displayingToken, setDisplayingToken] = useState(false);
   const [managingPermissionsFor, setManagingPermissionsFor] =
-    useState<ApiToken | null>(null);
+    useState(null);
   const [apiTokenBeingDeleted, setApiTokenBeingDeleted] =
-    useState<ApiToken | null>(null);
-  const page = usePage<any>();
+    useState(null);
+  const page = usePage();
 
   function createApiToken() {
     createApiTokenForm.post(route('api-tokens.store'), {
@@ -46,7 +46,7 @@ export default function APITokenManager({
     });
   }
 
-  function manageApiTokenPermissions(token: ApiToken) {
+  function manageApiTokenPermissions(token = ApiToken) {
     updateApiTokenForm.setData('permissions', token.abilities);
     setManagingPermissionsFor(token);
   }
@@ -65,7 +65,7 @@ export default function APITokenManager({
     );
   }
 
-  function confirmApiTokenDeletion(token: ApiToken) {
+  function confirmApiTokenDeletion(token = ApiToken) {
     setApiTokenBeingDeleted(token);
   }
 
